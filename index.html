@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script>
+        Office.onReady(() => {
+            document.getElementById("saveProjectNumber").onclick = saveProjectNumber;
+        });
+
+        function saveProjectNumber() {
+            let projectNumber = document.getElementById("projectNumber").value;
+            if (!projectNumber) {
+                alert("Please enter a project number.");
+                return;
+            }
+            Office.context.mailbox.item.body.setSelectedDataAsync("Project Number: " + projectNumber);
+        }
+    </script>
+</head>
+<body>
+    <label>Project Number:</label>
+    <input type="text" id="projectNumber" />
+    <button id="saveProjectNumber">Add to Email</button>
+</body>
+</html>
+`; 
